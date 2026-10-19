@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan Shop | Online General Store</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f8f2;
+  color: #243329;
+}
+
+header {
+  background: #123d2b;
+  color: white;
+  padding: 16px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffce66;
+  color: #123d2b;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+}
+
+.brand h2 { font-size: 22px; }
+
+nav {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cart-link {
+  background: #ffce66;
+  color: #123d2b;
+  border: none;
+  border-radius: 25px;
+  padding: 11px 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 420px;
+  padding: 35px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(135deg, #103e2b, #397a4e);
+  color: white;
+}
+
+.hero-content {
+  max-width: 700px;
+  animation: appear 1s ease;
+}
+
+.hero-photo {
+  width: 145px;
+  height: 145px;
+  border: 5px solid #ffce66;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 17px;
+  box-shadow: 0 8px 25px #0005;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 7vw, 52px);
+  margin-bottom: 12px;
+}
+
+.hero p {
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 23px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 23px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-yellow {
+  background: #ffce66;
+  color: #183b27;
+}
+
+.btn-white {
+  background: white;
+  color: #183b27;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 25px 5%;
+  background: white;
+}
+
+.feature {
+  text-align: center;
+  padding: 15px 5px;
+}
+
+.feature span { font-size: 29px; }
+.feature h3 { margin: 9px 0; }
+.feature p { font-size: 13px; color: #657267; }
+
+.section {
+  padding: 42px 5%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 29px;
+  color: #174b32;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #718075;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.category-btn {
+  padding: 10px 16px;
+  border: 1px solid #cbd8cc;
+  border-radius: 25px;
+  background: white;
+  color: #24563a;
+  cursor: pointer;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: #174b32;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px #173b2010;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 9px 22px #173b2020;
+}
+
+.product img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  background: #e5eee4;
+}
+
+.product-info { padding: 15px; }
+
+.product-info h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.product-info p {
+  color: #718075;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.price {
+  color: #187345;
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 9px;
+  background: #174b32;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-btn:hover { background: #26764b; }
+
+.promo {
+  margin: 10px 5% 35px;
+  padding: 32px 20px;
+  border-radius: 20px;
+  background: #ffedc5;
+  text-align: center;
+}
+
+.promo h2 {
+  color: #174b32;
+  margin-bottom: 10px;
+}
+
+.promo p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.cart-section { background: white; }
+
+.cart-box {
+  max-width: 800px;
+  margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f5f8f2;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #dce6dc;
+}
+
+.cart-item-name { flex: 1; }
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.qty-controls button {
+  width: 29px;
+  height: 29px;
+  border: none;
+  border-radius: 7px;
+  background: #174b32;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.remove-btn {
+  background: #b93434 !important;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #718075;
+  padding: 20px 0;
+}
+
+.order-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd8cc;
+  border-radius: 9px;
+  font: inherit;
+}
+
+.order-form textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.whatsapp-btn {
+  background: #159b50;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.about {
+  text-align: center;
+  line-height: 1.9;
+  max-width: 760px;
+  margin: auto;
+}
+
+footer {
+  background: #123d2b;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+  line-height: 2;
+}
+
+footer a {
+  color: #ffce66;
+  text-decoration: none;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  header { justify-content: center; }
+  nav { justify-content: center; }
+  .brand h2 { font-size: 20px; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .product img { height: 135px; }
+  .product-info { padding: 11px; }
+  .product-info h3 { font-size: 15px; }
+  .price { font-size: 17px; }
+  .section { padding: 32px 4%; }
+  .features { padding: 18px 3%; gap: 5px; }
+  .feature h3 { font-size: 13px; }
+  .feature p { font-size: 11px; }
+  .cart-box { padding: 13px; }
+  .cart-item { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <header style="display:flex; align-items:center; gap:12px;">
+  <img src="sayyam2.jpeg" alt="Manan Shop Logo" style="width:55px; height:55px; border-radius:50%; background:white; padding:3px;">
+  <div>
+    <h1>Manan Shop</h1>
+    <p>Admin Dashboard</p>
+  </div>
+</header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="cart-link" onclick="goToCart()">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <img
+      class="hero-photo"
+      src="sayyam3.jpeg"
+            alt="Fresh grocery products"
+    >
+
+    <h1>Welcome to Manan Shop</h1>
+    <p>
+      Your Friendly Online General Store<br>
+      دودھ، چاول، آٹا، دالیں اور گھر کی تمام ضروری چیزیں
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#products" class="btn btn-yellow">🛍️ Shop Now</a>
+      <a href="#about" class="btn btn-white">About Our Shop</a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <span>🥬</span>
+    <h3>Quality Products</h3>
+    <p>روزمرہ کا ضروری سامان</p>
+  </div>
+  <div class="feature">
+    <span>💰</span>
+    <h3>Fair Prices</h3>
+    <p>مناسب قیمتیں</p>
+  </div>
+  <div class="feature">
+    <span>💚</span>
+    <h3>Easy Ordering</h3>
+    <p>WhatsApp پر آرڈر کریں</p>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <h2 class="section-title">Our Products 🛍️</h2>
+  <p class="section-subtitle">
+    اپنی پسند کا سامان منتخب کریں اور کارٹ میں شامل کریں۔
+  </p>
+
+  <div class="categories">
+    <button class="category-btn active" onclick="filterProducts('All',this)">All</button>
+    <button class="category-btn" onclick="filterProducts('Grains',this)">Rice & Flour</button>
+    <button class="category-btn" onclick="filterProducts('Dairy',this)">Milk & Dairy</button>
+    <button class="category-btn" onclick="filterProducts('Pulses',this)">Daal & Pulses</button>
+    <button class="category-btn" onclick="filterProducts('Other',this)">Other Items</button>
+  </div>
+
+  <div class="products" id="products-list"></div>
+</section>
+
+<section class="promo">
+  <h2>🏡 Everything Your Home Needs!</h2>
+  <p>
+    چاول، آٹا، دالیں، دودھ، چینی، گھی، چائے اور بہت کچھ۔
+    <br>اپنا سامان منتخب کریں اور آسانی سے آرڈر بھیجیں۔
+  </p>
+  <a href="#products" class="btn btn-yellow">Explore Products</a>
+</section>
+
+<section class="section cart-section" id="cart">
+  <h2 class="section-title">🛒 Your Shopping Cart</h2>
+  <p class="section-subtitle">
+    آرڈر بھیجنے سے پہلے اپنا سامان چیک کریں۔
+  </p>
+
+  <div class="cart-box">
+    <div id="cart-items">
+      <p class="empty-cart">Your cart is empty.</p>
+    </div>
+
+    <div class="total">
+      <span>Total:</span>
+      <span id="cart-total">Rs. 0</span>
+    </div>
+
+    <form class="order-form" id="order-form">
+      <input id="customer-name" type="text"
+        placeholder="Your Name" required>
+
+      <input id="customer-phone" type="tel"
+        placeholder="Your Phone Number" required>
+
+      <textarea id="customer-address"
+        placeholder="Your Complete Delivery Address"
+        required></textarea>
+
+      <button class="whatsapp-btn" type="submit">
+        💚 Order on WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About Manan Shop</h2>
+  <div class="about">
+    <p>
+      Manan Shop آپ کا اپنا جنرل اسٹور ہے، جہاں آپ کو گھر کی روزمرہ
+      ضروریات کی مختلف اشیاء مل سکتی ہیں۔ ہمارا مقصد مناسب قیمتوں پر
+      اچھا سامان فراہم کرنا اور آرڈر کرنا آسان بنانا ہے۔
+    </p>
+    <p>
+      ہماری مصنوعات میں دودھ، چاول، آٹا، دالیں، چینی، گھی، تیل،
+      چائے، بسکٹ، نمک، مصالحے اور صفائی کا سامان شامل ہیں۔
+    </p>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>🛒 Manan Shop</h2>
+  <p>Your Trusted General Store</p>
+  <p>📱 WhatsApp: 037286730105</p>
+  <a href="#products">Browse Products</a>
+  <p>© <span id="year"></span> Manan Shop. All rights reserved.</p>
+</footer>
+
+<script>
+const products = [
+  {
+    id: 1, name: "Fresh Milk", category: "Dairy",
+    unit: "1 litre", price: 0,
+    image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 2, name: "Basmati Rice", category: "Grains",
+    unit: "1 kg", price: 0,
+    image: "sayyam4.jpeg"
+  },
+  {
+    id: 3, name: "Wheat Flour (Atta)", category: "Grains",
+    unit: "1 kg", price: 0,
+    image: "sayyam7.jpeg"
+  },
+  {
+    id: 4, name: " Daal", category: "Pulses",
+    unit: "1 kg", price: 0,
+    image: "sayyam5.jpeg"
+  },
+  {
+    id: 5, name: "cooking oil", category: "Pulses",
+    unit: "1 kg", price: 0,
+    image: "sayyam6.jpeg"
+  },
+  {
+    id: 6, name: "Sugar (Cheeni)", category: "Other",
+    unit: "1 kg", price: 180,
+    image: "sayyam11.jpeg"
+  },
+  {
+    id: 7, name: "oil", category: "Other",
+    unit: "1 litre", price: 550,
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 8, name: "Tea", category: "Other",
+    unit: "250 g", price: 350,
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 9, name: "maggy", category: "Dairy",
+    unit: "500 g", price: 900,
+    image: "sayyam8.jpeg"
+  },
+  {
+    id: 10, name: "Eggs", category: "Dairy",
+    unit: "Dozen", price: 360,
+    image: "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 11, name: "macroni", category: "Pulses",
+    unit: "1 kg", price: 320,
+    image: "sayyam9.jpeg"
+  },
+  {
+    id: 12, name: "Biscuits", category: "Other",
+    unit: "1 pack", price: 100,
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 13, name: "Salt (Namak)", category: "Other",
+    unit: "800 g", price: 80,
+    image: "sayyam12.jpeg"
+  },
+  {
+    id: 14, name: "Spices", category: "Other",
+    unit: "1 pack", price: 120,
+    image: "https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 15, name: "shampoo", category: "Dairy",
+    unit: "500 g", price: 150,
+    image: "sa.jpeg"
+  },
+  {
+    id: 16, name: "pemper", category: "Pulses",
+    unit: "1 kg", price: 250,
+    image: "s.jpeg"
+  }
+];
+
+let cart = {};
+
+function money(amount) {
+  return "Rs. " + amount.toLocaleString("en-PK");
+}
+
+function renderProducts(category = "All") {
+  const list = document.getElementById("products-list");
+
+  const filtered = category === "All"
+    ? products
+    : products.filter(p => p.category === category);
+
+  list.innerHTML = filtered.map(p => `
+    <article class="product">
+      <img src="${p.image}"
+           alt="${p.name}"
+           loading="lazy"
+           onerror="this.onerror=null;this.src='https://placehold.co/500x350/e5eee4/174b32?text=Manan+Shop'">
+
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p>${p.unit}</p>
+        <div class="price">${money(p.price)}</div>
+        <button class="add-btn" onclick="addToCart(${p.id})">
+          + Add to Cart
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function filterProducts(category, button) {
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  renderProducts(category);
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+}
+
+function changeQuantity(id, change) {
+  cart[id] = (cart[id] || 0) + change;
+
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+
+  renderCart();
+}
+
+function removeItem(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function getTotal() {
+  return products.reduce((total, p) => {
+    return total + p.price * (cart[p.id] || 0);
+  }, 0);
+}
+
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  const entries = products.filter(p => cart[p.id] > 0);
+
+  const count = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+
+  document.getElementById("cart-count").textContent = count;
+  document.getElementById("cart-total").textContent = money(getTotal());
+
+  if (!entries.length) {
+    container.innerHTML =
+      '<p class="empty-cart">Your cart is empty. Add some products!</p>';
+    return;
+  }
+
+  container.innerHTML = entries.map(p => `
+    <div class="cart-item">
+      <div class="cart-item-name">
+        <strong>${p.name}</strong><br>
+        <small>${money(p.price)} × ${cart[p.id]}</small>
+      </div>
+
+      <div class="qty-controls">
+        <button onclick="changeQuantity(${p.id},-1)">−</button>
+        <span>${cart[p.id]}</span>
+        <button onclick="changeQuantity(${p.id},1)">+</button>
+        <button class="remove-btn" onclick="removeItem(${p.id})">×</button>
+      </div>
+
+      <strong>${money(p.price * cart[p.id])}</strong>
+    </div>
+  `).join("");
+}
+
+function goToCart() {
+  document.getElementById("cart").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+document.getElementById("order-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (Object.keys(cart).length === 0) {
+    alert("Please add products to your cart first.");
+    return;
+  }
+
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const address = document.getElementById("customer-address").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("Please enter your name, phone number and address.");
+    return;
+  }
+
+  let message = "🛒 *NEW ORDER - MANAN SHOP*%0A%0A";
+  message += "*Customer:* " + encodeURIComponent(name) + "%0A";
+  message += "*Phone:* " + encodeURIComponent(phone) + "%0A";
+  message += "*Address:* " + encodeURIComponent(address) + "%0A%0A";
+  message += "*ORDER DETAILS:*%0A";
+
+  products.filter(p => cart[p.id] > 0).forEach(p => {
+    message += encodeURIComponent(
+      p.name + " (" + p.unit + ") x " + cart[p.id] +
+      " = " + money(p.price * cart[p.id])
+    ) + "%0A";
+  });
+
+  message += "%0A*TOTAL: " + money(getTotal()) + "*";
+  message += "%0A%0APlease confirm my order.";
+
+  // WhatsApp international format:
+  // Enter the correct number without + or leading zero.
+  const whatsappNumber = "9203286730105";
+
+  const url = "https://wa.me/" + whatsappNumber + "?text=" + message;
+  window.open(url, "_blank");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan Shop Admin</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #13fafa;
+  color:  #000000;
+}
+
+header {
+  background: #34565f;
+  color: white;
+  padding: 22px 16px;
+}
+
+header h1 {
+  font-size: 25px;
+}
+
+header p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.container {
+  padding: 16px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  margin: 15px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: rgb(250, 250, 250);
+  padding: 18px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #00000010;
+}
+
+.card p {
+  color: #637568;
+  font-size: 14px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #176b3a;
+}
+
+.panel {
+  background: white;
+  padding: 18px;
+  margin-top: 18px;
+  border-radius: 12px;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  background: #176b3a;
+  color: white;
+  padding: 11px 14px;
+  cursor: pointer;
+  margin: 5px 3px 5px 0;
+}
+
+input, select {
+  width: 100%;
+  padding: 11px;
+  margin: 8px 0;
+  border: 1px solid #cbd8ce;
+  border-radius: 7px;
+  background: white;
+}
+
+.notice {
+  background: #fff4d5;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #637568;
+  font-size: 13px;
+}
+
+@media (min-width: 700px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <header style="display:flex; align-items:center; gap:14px;">
+ <img src="sayyam2.jpeg" " alt="Manan Shop Logo" 
+       style="width:60px; height:60px; object-fit:cover; border-radius:50%; border:3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+  <div>
+    <h1 style="margin:0;">Manan Shop</h1>
+    <p style="margin:0; opacity:0.9;">Admin Dashboard</p>
+  </div>
+</header>
+</header>
+
+<main class="container">
+
+  <h2>Dashboard Overview</h2>
+
+  <section class="cards">
+    <div class="card">
+      <p>Today's Orders</p>
+      <h3 id="orders">0</h3>
+    </div>
+
+    <div class="card">
+      <p>Total Orders Amount</p>
+      <h3 id="total">Rs. 0</h3>
+    </div>
+
+    <div class="card">
+      <p>Completed Sales</p>
+      <h3 id="sales">Rs. 0</h3>
+    </div>
+
+    <div class="card">
+      <p>Low Stock Products</p>
+      <h3 id="stock">0</h3>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Order Management</h2>
+
+    <label>Order Number</label>
+    <input id="orderNo" placeholder="Enter order number">
+
+    <label>Order Amount (Rs.)</label>
+    <input id="amount" type="number" min="0"
+      placeholder="Enter amount">
+
+    <label>Order Status</label>
+    <select id="status">
+      <option>Pending</option>
+      <option>Confirmed</option>
+      <option>Preparing</option>
+      <option>Out for Delivery</option>
+      <option>Delivered</option>
+      <option>Cancelled</option>
+    </select>
+
+    <button onclick="addOrder()">Add Demo Order</button>
+
+    <div id="orderList"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Low Stock Alert</h2>
+    <div class="notice">
+      Low-stock products will appear here when connected
+      to the real product database.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Employee Permissions</h2>
+
+    <label>Employee Access</label>
+    <select id="role">
+      <option>Orders Only</option>
+      <option>Orders and Products</option>
+      <option>View Reports</option>
+    </select>
+
+    <p>
+      Only the owner should manage prices, employee
+      permissions and Maintenance Mode.
+    </p>
+
+    <div class="notice">
+      Demo only: permissions are not securely enforced.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Daily Reports</h2>
+    <p>Daily sales report: PDF and Excel</p>
+    <p style="margin-top:8px">
+      Real report exports require saved order data.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  Manan Shop Admin Dashboard
+</footer>
+
+<script>
+let orders = [];
+
+function addOrder() {
+  const number = document.getElementById("orderNo").value.trim();
+  const amount = Number(document.getElementById("amount").value);
+  const status = document.getElementById("status").value;
+
+  if (!number || !Number.isFinite(amount) || amount < 0) {
+    alert("Enter a valid order number and amount.");
+    return;
+  }
+
+  orders.push({
+    number: number,
+    amount: amount,
+    status: status
+  });
+
+  updateDashboard();
+
+  document.getElementById("orderNo").value = "";
+  document.getElementById("amount").value = "";
+}
+
+function updateDashboard() {
+  const total = orders
+    .filter(o => o.status !== "Cancelled")
+    .reduce((sum, o) => sum + o.amount, 0);
+
+  const sales = orders
+    .filter(o => o.status === "Delivered")
+    .reduce((sum, o) => sum + o.amount, 0);
+
+  document.getElementById("orders").textContent =
+    orders.length;
+
+  document.getElementById("total").textContent =
+    "Rs. " + total.toLocaleString();
+
+  document.getElementById("sales").textContent =
+    "Rs. " + sales.toLocaleString();
+
+  document.getElementById("orderList").innerHTML = "";
+
+  orders.forEach(order => {
+    const item = document.createElement("p");
+    item.style.padding = "10px 0";
+    item.textContent =
+      "Order #" + order.number +
+      " | Rs. " + order.amount +
+      " | " + order.status;
+
+    document.getElementById("orderList")
+      .appendChild(item);
+  });
+}
+</script>
+
+</body>
+</html>
+<!-- Manan Shop Location Section -->
+<section id="location" class="location-section">
+
+  <h2>📍 Visit Manan Shop</h2>
+  <p class="location-subtitle">
+    ہماری دکان پر خوش آمدید!
+  </p>
+
+  <div class="location-container">
+
+    <!-- Shop Photo: Replace shop-photo.jpeg with your image name -->
+    <div class="location-photo">
+      <img
+        src="f.jpeg"
+        alt="Manan Shop Photo"
+        onerror="this.style.display='none'"
+      >
+      <p>Manan Shop</p>
+    </div>
+
+    <!-- Shop Address and WhatsApp -->
+    <div class="location-info">
+
+      <h3>🏪 Manan Shop</h3>
+
+      <p>
+        📍 <strong>Address:</strong><br>
+        Sirki Road, Quetta, Balochistan, Pakistan
+      </p>
+
+      <p>
+        📱 <strong>WhatsApp:</strong><br>
+        0328 6730105
+      </p>
+
+      <a
+        class="location-whatsapp"
+        href="https://wa.me/92303286730105"
+        target="_blank"
+        rel="noopener"
+      >
+        💚 Contact Us on WhatsApp
+      </a>
+
+      <a
+        class="location-map"
+        href="https://www.google.com/maps/search/?api=1&query=Sirki+Road%2C+Quetta%2C+Balochistan"
+        target="_blank"
+        rel="noopener"
+      >
+        📍 Open Location in Google Maps
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.location-section {
+  padding: 40px 5%;
+  background: #f5f8f2;
+  text-align: center;
+}
+
+.location-section h2 {
+  color: #174b32;
+  margin-bottom: 10px;
+}
+
+.location-subtitle {
+  color: #657267;
+  margin-bottom: 25px;
+}
+
+.location-container {
+  max-width: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+
+.location-photo,
+.location-info {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px #00000010;
+}
+
+.location-photo img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.location-photo p {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #174b32;
+}
+
+.location-info h3 {
+  color: #174b32;
+  margin-bottom: 18px;
+}
+
+.location-info p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  overflow-wrap: anywhere;
+}
+
+.location-whatsapp,
+.location-map {
+  display: block;
+  padding: 13px;
+  margin-top: 12px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.location-whatsapp {
+  background: #159b50;
+  color: white;
+}
+
+.location-map {
+  background: #174b32;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .location-container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
